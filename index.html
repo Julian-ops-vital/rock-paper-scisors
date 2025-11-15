@@ -8,11 +8,19 @@
 <body>
     <script>
         console.log("Hello world");
-        let humanScore = 0, computerScore = 0;
-        playRound(getHumanChoice(),getComputerChoice());
-        console.log("human: " + humanScore + "\ncomputer: " + computerScore)
+        playGame();
 
-        function playRound(humanChoice, computerChoice){
+
+
+
+        function playGame(){
+            let humanScore = 0, computerScore = 0;
+            for(let i = 0; i < 5; i++){
+                console.log("Round #" + (i+1));
+                playRound(getHumanChoice(),getComputerChoice());
+                console.log("human: " + humanScore + "\ncomputer: " + computerScore)
+            }
+            function playRound(humanChoice, computerChoice){
             humanChoice = humanChoice.toLowerCase();
             if(humanChoice == "rock"){
                 if(computerChoice == "rock"){
@@ -52,6 +60,7 @@
                 }
             }
 
+        }
         }
 
         function getComputerChoice() {
