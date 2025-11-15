@@ -8,8 +8,14 @@
 <body>
     <script>
         console.log("Hello world");
+        let humanScore = 0, computerScore = 0;
         getComputerChoice()
         getHumanChoice()
+        function playRound(humanChoice, computerChoice){
+            humanChoice.toLowerCase();
+
+        }
+
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
             let computerHand
@@ -27,17 +33,7 @@
         }
 
         function getHumanChoice(){
-            let number = window.prompt("Choose a number to select you hand \n1 = Rock\n2 = Paper\n3 = Scissors");
-            let humanHand
-            if(number == 1){
-                humanHand = "Rock";
-            }
-            else if (number == 2){
-                humanHand = "Paper";
-            }
-            else{
-                humanHand = "Scissors";
-            }
+            let humanHand= window.prompt("Choose a number to select you hand \nRock\nPaper\nScissors");
             console.log("Human: " + humanHand)
             return humanHand
         }
