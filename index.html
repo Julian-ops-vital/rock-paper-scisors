@@ -11,7 +11,18 @@
         getComputerChoice()
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
-            console.log(randomNumber)
+            let hand
+            if(randomNumber === 3){
+                hand = "Rock";
+            }
+            else if (randomNumber === 2){
+                hand = "Paper";
+            }
+            else{
+                hand = "scisors";
+            }
+            console.log(hand)
+
         }
     </script>
 </body>
