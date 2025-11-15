@@ -9,10 +9,48 @@
     <script>
         console.log("Hello world");
         let humanScore = 0, computerScore = 0;
-        getComputerChoice()
-        getHumanChoice()
+        playRound(getHumanChoice(),getComputerChoice());
+        console.log("human: " + humanScore + "\ncomputer: " + computerScore)
+
         function playRound(humanChoice, computerChoice){
-            humanChoice.toLowerCase();
+            humanChoice = humanChoice.toLowerCase();
+            if(humanChoice == "rock"){
+                if(computerChoice == "rock"){
+                    console.log("It's a Tie");
+                }
+                else if(computerChoice == "paper"){
+                    console.log("You lose! Paper beats Rock");
+                    computerScore += 1;
+                }
+                else if(computerChoice == "scissors"){
+                    console.log("You Won! Rock beats Scissors");
+                    humanScore += 1;
+                }
+            }else if(humanChoice == "paper"){
+                if(computerChoice == "rock"){
+                    console.log("You Won! Paper beats Rock");
+                    humanScore += 1;
+                }
+                else if(computerChoice == "paper"){
+                    console.log("It's a Tie");
+                }
+                else if(computerChoice == "scissors"){
+                    console.log("You lose! Scissors beats Paper");
+                    computerScore += 1;
+                }
+            }else if(humanChoice == "scissors"){
+                if(computerChoice == "rock"){
+                    console.log("You lose! Rock beats Scissors");
+                    computerScore += 1;
+                }
+                else if(computerChoice == "paper"){
+                    console.log("You Won! Scissors beats Paper");
+                    humanScore += 1;
+                }
+                else if(computerChoice == "scissors"){
+                    console.log("It's a Tie");
+                }
+            }
 
         }
 
@@ -20,13 +58,13 @@
             let randomNumber = Math.floor(Math.random() * 3) + 1;
             let computerHand
             if(randomNumber == 1){
-                computerHand = "Rock";
+                computerHand = "rock";
             }
             else if (randomNumber == 2){
-                computerHand = "Paper";
+                computerHand = "paper";
             }
             else{
-                computerHand = "Scissors";
+                computerHand = "scissors";
             }
             console.log("Computer: " + computerHand)
             return computerHand
