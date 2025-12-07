@@ -11,7 +11,7 @@
         <button id = "paper">Paper</button>
         <button id = "scissors">Scissors</button>
     </div>
-    <div class="points" style="border: 1px solid black; width: 100px;">
+    <div class="points" style="border: 1px solid black; width: 120px;">
         <h3 style="margin: 0;">Score</h3>
         <div class="humanPoints">Human: 0</div>
         <div class="computerPoints">Computer: 0</div>
@@ -94,7 +94,20 @@
             //Updates points
             document.querySelector(".humanPoints").textContent = `Human: ${humanScore}`
             document.querySelector(".computerPoints").textContent = `Computer: ${computerScore}`
+            SomeoneWon(humanScore, computerScore)
 
+        }
+        function SomeoneWon(human, computer){
+            if(human >= 5 || computer >= 5){
+                document.querySelectorAll("button").forEach(function(btn){
+                    btn.disabled = true
+                })
+                if(human >= 5){
+                    document.querySelector(".winnerAnnounce").append("Humans Wins")
+                }else if(computer >= 5){
+                    document.querySelector(".winnerAnnounce").append("Computer Wins")
+                }
+            }
         }
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
