@@ -15,6 +15,7 @@
         <h3 style="margin: 0;">Score</h3>
         <div class="humanPoints">Human: 0</div>
         <div class="computerPoints">Computer: 0</div>
+        <div class="winnerAnnounce" style="font-weight: bolder;"></div>
     </div>
     <div>------------</div>
     <div class="Results">
@@ -26,6 +27,8 @@
 
 
     <script>
+        let humanScore = 0
+        let computerScore = 0
         document.querySelectorAll("button").forEach(function(btn){
             btn.addEventListener('click', function(e){
                 playRound(e)
@@ -40,7 +43,6 @@
             human.textContent = "Human: "
             computer.textContent = "Computer: "
             results.textContent = ""
-
 
             //Get hand of each player
             const humanChoice = event.target.id
@@ -89,6 +91,10 @@
                     results.append("It's a Tie");
                 }
             }
+            //Updates points
+            document.querySelector(".humanPoints").textContent = `Human: ${humanScore}`
+            document.querySelector(".computerPoints").textContent = `Computer: ${computerScore}`
+
         }
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
