@@ -11,13 +11,17 @@
         <button id = "paper">Paper</button>
         <button id = "scissors">Scissors</button>
     </div>
-    <div class="points">
+    <div class="points" style="border: 1px solid black; width: 100px;">
+        <h3 style="margin: 0;">Score</h3>
         <div class="humanPoints">Human: 0</div>
         <div class="computerPoints">Computer: 0</div>
     </div>
+    <div>------------</div>
     <div class="Results">
+        <h3 style="margin: 0;">Round</h3>
         <div class="human">Human: </div>
         <div class="computer">Computer: </div>
+        <div class="resultRound"></div>
     </div>
 
 
@@ -29,16 +33,24 @@
         })
 
         function playRound(event){
+            //Clean choices
+            const results = document.querySelector(".resultRound")
+            const computer = document.querySelector(".computer")
+            const human = document.querySelector(".human")
+            human.textContent = "Human: "
+            computer.textContent = "Computer: "
+            results.textContent = ""
+
+
+            //Get hand of each player
             const humanChoice = event.target.id
             const computerChoice = getComputerChoice()
 
-            const human = document.querySelector(".human")
+            //Place choice in the div
             human.append(humanChoice)
-
-            const computer = document.querySelector(".computer")
             computer.append(computerChoice)
 
-            const results = document.querySelector(".Results")
+            //Check which hand win
             if(humanChoice == "rock"){
                 if(computerChoice == "rock"){
                     
@@ -78,7 +90,6 @@
                 }
             }
         }
-
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
             let computerHand
