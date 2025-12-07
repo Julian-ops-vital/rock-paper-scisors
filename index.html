@@ -6,61 +6,77 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="buttonContainer">
+        <button id = "rock">Rock</button>
+        <button id = "paper">Paper</button>
+        <button id = "scissors">Scissors</button>
+    </div>
+    <div class="points">
+        <div class="humanPoints">Human: 0</div>
+        <div class="computerPoints">Computer: 0</div>
+    </div>
+    <div class="Results">
+        <div class="human">Human: </div>
+        <div class="computer">Computer: </div>
+    </div>
+
+
     <script>
-        console.log("Hello world");
-        playGame();
+        document.querySelectorAll("button").forEach(function(btn){
+            btn.addEventListener('click', function(e){
+                playRound(e)
+            })
+        })
 
+        function playRound(event){
+            const humanChoice = event.target.id
+            const computerChoice = getComputerChoice()
 
+            const human = document.querySelector(".human")
+            human.append(humanChoice)
 
+            const computer = document.querySelector(".computer")
+            computer.append(computerChoice)
 
-        function playGame(){
-            let humanScore = 0, computerScore = 0;
-            for(let i = 0; i < 5; i++){
-                console.log("Round #" + (i+1));
-                playRound(getHumanChoice(),getComputerChoice());
-                console.log("human: " + humanScore + "\ncomputer: " + computerScore)
-            }
-            function playRound(humanChoice, computerChoice){
-            humanChoice = humanChoice.toLowerCase();
+            const results = document.querySelector(".Results")
             if(humanChoice == "rock"){
                 if(computerChoice == "rock"){
-                    console.log("It's a Tie");
+                    
+                    results.append("It's a Tie");
                 }
                 else if(computerChoice == "paper"){
-                    console.log("You lose! Paper beats Rock");
+                    results.append("You lose! Paper beats Rock");
                     computerScore += 1;
                 }
                 else if(computerChoice == "scissors"){
-                    console.log("You Won! Rock beats Scissors");
+                    results.append("You Won! Rock beats Scissors");
                     humanScore += 1;
                 }
             }else if(humanChoice == "paper"){
                 if(computerChoice == "rock"){
-                    console.log("You Won! Paper beats Rock");
+                    results.append("You Won! Paper beats Rock");
                     humanScore += 1;
                 }
                 else if(computerChoice == "paper"){
-                    console.log("It's a Tie");
+                    results.append("It's a Tie");
                 }
                 else if(computerChoice == "scissors"){
-                    console.log("You lose! Scissors beats Paper");
+                    results.append("You lose! Scissors beats Paper");
                     computerScore += 1;
                 }
             }else if(humanChoice == "scissors"){
                 if(computerChoice == "rock"){
-                    console.log("You lose! Rock beats Scissors");
+                    results.append("You lose! Rock beats Scissors");
                     computerScore += 1;
                 }
                 else if(computerChoice == "paper"){
-                    console.log("You Won! Scissors beats Paper");
+                    results.append("You Won! Scissors beats Paper");
                     humanScore += 1;
                 }
                 else if(computerChoice == "scissors"){
-                    console.log("It's a Tie");
+                    results.append("It's a Tie");
                 }
             }
-
-        }
         }
 
         function getComputerChoice() {
@@ -79,11 +95,6 @@
             return computerHand
         }
 
-        function getHumanChoice(){
-            let humanHand= window.prompt("Choose a number to select you hand \nRock\nPaper\nScissors");
-            console.log("Human: " + humanHand)
-            return humanHand
-        }
     </script>
 </body>
 </html>
